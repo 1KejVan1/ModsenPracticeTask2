@@ -1,0 +1,42 @@
+$bd-rad: 10px;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bg_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    background-color: white;
+    border-top-right-radius: $bd-rad;
+    border-bottom-right-radius: $bd-rad;
+    border: none;
+    cursor: pointer;
+  }
+
+  .search {
+    width: 400px;
+    height: 33px;
+    border: none;
+    padding-left: 15px;
+    border-top-left-radius: $bd-rad;
+    border-bottom-left-radius: $bd-rad;
+    font-size: larger;
+
+    @media (max-width: 600px) {
+      width: auto;
+    }
+
+    @media (max-width: 400px) {
+      width: 150px;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

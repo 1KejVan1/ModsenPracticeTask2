@@ -1,0 +1,67 @@
+.container {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: repeat(3, 33%);
+  height: 150px;
+  background-image: url("../../assets/1621694807-11-phonoteka-org-p-kn1.jpg");
+  align-items: center;
+  padding: 15px;
+  gap: 5px;
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 200px;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 250px;
+    gap: 20px;
+  }
+
+  @media (max-width: 310px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 350px;
+    gap: 10px;
+  }
+
+  .title {
+    font-size: 36px;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    color: white;
+    text-align: center;
+  }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row-start: 2;
+    grid-column-start: 2;
+  }
+
+  .select_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    grid-row-start: 3;
+    grid-column-start: 2;
+
+    @media (max-width: 600px) {
+      flex-wrap: wrap;
+    }
+  }
+}

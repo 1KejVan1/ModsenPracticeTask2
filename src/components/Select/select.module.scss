@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 310px) {
+    flex-wrap: wrap;
+  }
+
+  .label {
+    color: white;
+    font-size: larger;
+  }
+
+  .select {
+    font-size: large;
+    width: 170px;
+    height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+
+    &:invalid {
+      color: gray;
+    }
+    // .default_option {
+    //   color: gray;
+    // }
+
+    .options {
+      cursor: pointer;
+    }
+  }
+}
