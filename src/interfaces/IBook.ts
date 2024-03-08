@@ -1,7 +1,14 @@
 export interface IBook {
   smallimage?: string;
   bigimage?: string;
-  categories: string | string[];
+  categories: string[];
   title: string;
-  authors: string | string[];
+  authors: string[];
+  id: string;
+}
+
+export interface IBooks {
+  books: IBook[];
+  quantity_items: number | undefined;
+  isLoaded: boolean | undefined;
 }

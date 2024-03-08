@@ -12,9 +12,11 @@ function Card(props: IBook): ReactElement {
           alt={props.title}
         />
       </div>
-      <div className={style.category}>{props.categories}</div>
+      <div className={style.category}>
+        {props.categories && props.categories[0]}
+      </div>
       <div className={style.title}>{props.title}</div>
-      <div className={style.author}>{props.authors}</div>
+      <div className={style.author}>{props.authors && props.authors[0]}</div>
     </div>
   );
 }

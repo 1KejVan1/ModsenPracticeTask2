@@ -9,7 +9,7 @@ interface IOption {
 interface Props {
   title: string;
   options: IOption[];
-  selectedValue: string;
+  selectedValue: string | undefined;
   onchange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 

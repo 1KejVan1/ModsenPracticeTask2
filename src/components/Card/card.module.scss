@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: 60% 10% 25% 5%;
   width: 200px;
-  height: 350px;
+  height: 370px;
   background-color: #f3f2f1;
   padding: 25px;
   border-radius: 15px;
@@ -17,11 +17,15 @@
   }
 
   .title {
-    display: flex;
-    align-items: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    padding: 0;
+    overflow: hidden;
     font-weight: 600;
     font-size: large;
     grid-row-start: 3;
+    height: fit-content;
   }
 
   .author {

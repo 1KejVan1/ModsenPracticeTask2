@@ -2,12 +2,15 @@ import { ReactElement, useEffect, useState } from "react";
 import style from "./header.module.scss";
 import SearchBar from "../SearchBar/SearchBar";
 import Select from "../Select/Select";
-import { useAppDispatch } from "../../hooks/redux";
+import { useAppDispatch, useAppSelect } from "../../hooks/redux";
 import useFetching from "../../hooks/fetchBooks";
 import { getBooks } from "../../API/api";
-import { resetBooks } from "../../store/bookSlice";
+import { changeLoadStatus, resetBooks } from "../../store/bookSlice";
+import { setText, setCategory, setSort } from "../../store/searchSlice";
 
 function Header(): ReactElement {
+  const search = useAppSelect((state) => state.search);
+  const dispatch = useAppDispatch();
   const [categories] = useState([
     { title: "all", value: "all" },
     { title: "art", value: "art" },
@@ -21,31 +24,27 @@ function Header(): ReactElement {
     { title: "relevance", value: "relevance" },
     { title: "newest", value: "newest" },
   ]);
-  const [selectedSort, setSelectedSort] = useState<string>("relevance");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [searchText, setSearchText] = useState<string>("");
   const [fetchData, setFetchData] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
-  const { fetching, isLoaded } = useFetching(async () => {
-    let data = await getBooks({
-      searchText: searchText,
-      sortingBy: selectedSort,
-      category: selectedCategory,
-    });
 
-    dispatch(resetBooks(data));
+  const [fetching, isLoaded, error] = useFetching(async () => {
+    let data = await getBooks({
+      searchText: search.searchText,
+      sortingBy: search.sortingBy,
+      category: search.category,
+    });
+    dispatch(resetBooks({ ...data, isLoaded: isLoaded }));
   });
 
   function handleSelectCategory(e: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedCategory(e.target.value);
+    dispatch(setCategory(e.target.value));
   }
 
   function handleSelectSort(e: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedSort(e.target.value);
+    dispatch(setSort(e.target.value));
   }
 
   function handleInputText(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchText(e.target.value);
+    dispatch(setText(e.target.value));
   }
 
   useEffect(() => {
@@ -55,13 +54,17 @@ function Header(): ReactElement {
     }
   }, [fetchData]);
 
+  useEffect(() => {
+    dispatch(changeLoadStatus(isLoaded));
+  }, [isLoaded]);
+
   return (
     <header className={style.container}>
       <h1 className={style.title}>Search for books</h1>
       <div className={style.search}>
         <SearchBar
           showIcon={true}
-          text={searchText}
+          text={search.searchText}
           onchange={handleInputText}
           setFetchData={setFetchData}
         />
@@ -71,13 +74,13 @@ function Header(): ReactElement {
           title="Categories"
           options={categories}
           onchange={handleSelectCategory}
-          selectedValue={selectedCategory}
+          selectedValue={search.category}
         />
         <Select
           title="Sorting by"
           options={sort}
           onchange={handleSelectSort}
-          selectedValue={selectedSort}
+          selectedValue={search.sortingBy}
         />
       </div>
     </header>
