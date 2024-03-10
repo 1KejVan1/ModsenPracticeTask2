@@ -7,10 +7,12 @@ import useFetching from "../../hooks/fetchBooks";
 import { getBooks } from "../../API/api";
 import { changeLoadStatus, resetBooks } from "../../store/bookSlice";
 import { setText, setCategory, setSort } from "../../store/searchSlice";
+import { useNavigate } from "react-router";
 
 function Header(): ReactElement {
   const search = useAppSelect((state) => state.search);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [categories] = useState([
     { title: "all", value: "all" },
     { title: "art", value: "art" },
@@ -33,6 +35,9 @@ function Header(): ReactElement {
       category: search.category,
     });
     dispatch(resetBooks({ ...data, isLoaded: isLoaded }));
+    if (window.location.href.indexOf("book") !== -1) {
+      navigate("/");
+    }
   });
 
   function handleSelectCategory(e: React.ChangeEvent<HTMLSelectElement>) {
