@@ -8,6 +8,7 @@ import { getBooks } from "../../API/api";
 import { changeLoadStatus, resetBooks } from "../../store/bookSlice";
 import { setText, setCategory, setSort } from "../../store/searchSlice";
 import { useNavigate } from "react-router";
+import { setStartIndex } from "../../store/searchSlice";
 
 function Header(): ReactElement {
   const search = useAppSelect((state) => state.search);
@@ -34,6 +35,7 @@ function Header(): ReactElement {
       sortingBy: search.sortingBy,
       category: search.category,
     });
+    dispatch(setStartIndex((search.startIndex as number) + 30));
     dispatch(resetBooks({ ...data, isLoaded: isLoaded }));
     if (window.location.href.indexOf("book") !== -1) {
       navigate("/");
@@ -53,9 +55,14 @@ function Header(): ReactElement {
   }
 
   useEffect(() => {
-    if (fetchData == true) {
+    if (fetchData == true && search.searchText.trim() !== "") {
       fetching();
       setFetchData(false);
+    } else {
+      if (fetchData === true) {
+        alert("The search bar should not be empty");
+        setFetchData(false);
+      }
     }
   }, [fetchData]);
 
