@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useAppSelect } from "../../hooks/redux";
 import { IBook } from "../../interfaces/IBook";
 import style from "./bookpage.module.scss";
+import BookDoesntExistPage from "../BookDoesntExistPage/BookDoesntExistsPage";
 
 function BookPage(): ReactElement {
   const params = useParams<string>();
@@ -12,7 +13,7 @@ function BookPage(): ReactElement {
   );
 
   if (book === undefined) {
-    return <div>Такой книги нет</div>;
+    return <BookDoesntExistPage />;
   } else {
     return (
       <div className={style.container}>

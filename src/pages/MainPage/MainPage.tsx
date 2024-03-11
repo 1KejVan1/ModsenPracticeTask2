@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useMemo, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import CardList from "../../components/CardList/CardList";
 import style from "./page.module.scss";
 import { useAppDispatch, useAppSelect } from "../../hooks/redux";
