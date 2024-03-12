@@ -1,3 +1,5 @@
+# Ссылка на проект: https://modsen-practice-task2-wk3b.vercel.app/
+
 # Практического задание js/react
 
 ## Задание
