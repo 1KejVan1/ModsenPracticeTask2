@@ -52,7 +52,7 @@ function MainPage(): ReactElement {
         <Loader />
       ) : (
         <>
-          {books.quantity_items && (
+          {books && (
             <div className={style.quantity_container}>
               Found {books.quantity_items} results
             </div>
