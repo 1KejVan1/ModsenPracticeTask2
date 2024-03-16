@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import style from "./cardlist.module.scss";
 import Card from "../Card/Card";
 import { useAppSelect } from "../../hooks/redux";
+import { IBook } from "../../interfaces/IBook";
 
 interface Props {
   end: number;
+  books: IBook[];
 }
 
-function CardList({ end = 30 }: Props): ReactElement {
-  const books = useAppSelect((state) => state.books);
-
+function CardList({ end = 30, books = [] }: Props): ReactElement {
   return (
     <div className={style.container}>
-      {books.books.slice(0, end + 1).map((item) => (
-        <Link key={Date.now() * Math.random()} to={`book/${item.id}`}>
+      {books.slice(0, end + 1).map((item) => (
+        <Link key={Date.now() * Math.random()} to={`/book/${item.id}`}>
           <Card
             title={item.title}
             authors={item.authors}

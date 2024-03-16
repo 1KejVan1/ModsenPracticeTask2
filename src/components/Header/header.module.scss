@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 200px;
+    height: 250px;
     gap: 20px;
   }
 
@@ -22,17 +22,17 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 250px;
+    height: 300px;
     gap: 20px;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 295px) {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 350px;
-    gap: 10px;
+    height: 400px;
+    gap: 15px;
   }
 
   .title {
@@ -61,7 +61,12 @@
     grid-column-start: 2;
 
     @media (max-width: 600px) {
-      flex-wrap: wrap;
+      flex-direction: column;
     }
+  }
+
+  .favourites_and_theme {
+    grid-row-start: 2;
+    grid-column-start: 3;
   }
 }

@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  text-decoration: none;
+
+  @media (max-width: 868px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 600px) {
+  }
+
+  .title {
+    color: white;
+    letter-spacing: 0.1em;
+    font-size: large;
+
+    @media (max-width: 765px) {
+      opacity: 1;
+      display: block;
+    }
+
+    @media (min-width: 766px) and (max-width: 868px) {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    color: white;
+  }
+}

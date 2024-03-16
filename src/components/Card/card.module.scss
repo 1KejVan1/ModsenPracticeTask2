@@ -8,6 +8,7 @@
   border-radius: 15px;
 
   .category {
+    column-span: all;
     display: flex;
     align-items: center;
     color: #a0a4a7;
@@ -36,9 +37,11 @@
     color: #a0a4a7;
     grid-row-start: 4;
     word-break: break-all;
+    max-width: 150px;
   }
 
   .image_container {
+    grid-column: span;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +49,16 @@
     img {
       width: 128px;
       height: 200px;
+    }
+  }
+
+  .container_for_author_favourite {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .icon {
+      border: none;
     }
   }
 }

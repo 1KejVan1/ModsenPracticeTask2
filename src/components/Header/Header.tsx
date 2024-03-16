@@ -9,6 +9,7 @@ import { changeLoadStatus, resetBooks } from "../../store/bookSlice";
 import { setText, setCategory, setSort } from "../../store/searchSlice";
 import { useNavigate } from "react-router";
 import { setStartIndex } from "../../store/searchSlice";
+import Favourites from "../Favourites/Favourites";
 
 function Header(): ReactElement {
   const search = useAppSelect((state) => state.search);
@@ -37,7 +38,10 @@ function Header(): ReactElement {
     });
     dispatch(setStartIndex((search.startIndex as number) + 30));
     dispatch(resetBooks({ ...data, isLoaded: isLoaded }));
-    if (window.location.href.indexOf("book") !== -1) {
+    if (
+      window.location.href.indexOf("book") !== -1 ||
+      window.location.href.indexOf("favourites") !== -1
+    ) {
       navigate("/");
     }
   });
@@ -70,6 +74,12 @@ function Header(): ReactElement {
     dispatch(changeLoadStatus(isLoaded));
   }, [isLoaded]);
 
+  useEffect(() => {
+    if (error) {
+      alert(error);
+    }
+  }, [error]);
+
   return (
     <header className={style.container}>
       <h1 className={style.title}>Search for books</h1>
@@ -94,6 +104,9 @@ function Header(): ReactElement {
           onchange={handleSelectSort}
           selectedValue={search.sortingBy}
         />
+      </div>
+      <div className={style.favourites_and_theme}>
+        <Favourites />
       </div>
     </header>
   );

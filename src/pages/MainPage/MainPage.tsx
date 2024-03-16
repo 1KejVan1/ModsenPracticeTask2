@@ -57,7 +57,7 @@ function MainPage(): ReactElement {
               Found {books.quantity_items} results
             </div>
           )}
-          <CardList end={endIndex} />
+          <CardList end={endIndex} books={books.books} />
           {books.quantity_items &&
             endIndex !== (books.quantity_items as number) && (
               <div className={style.button_contaner}>
