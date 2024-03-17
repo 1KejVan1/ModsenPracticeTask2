@@ -16,7 +16,6 @@
     grid-row-start: 1;
     grid-row-end: 3;
 
-    background-color: #f3f2f1;
     .image {
       display: flex;
       height: 400px;
@@ -34,7 +33,6 @@
 
     .categories {
       font-size: medium;
-      color: #676767;
     }
 
     .title {
@@ -46,7 +44,6 @@
 
     .authors {
       font-size: medium;
-      color: #676767;
       text-decoration: underline;
     }
 
@@ -57,7 +54,41 @@
       max-width: 600px;
       height: 300px;
       font-size: large;
-      border: 1px solid lightgray;
+      border: 1px solid;
     }
   }
+}
+
+.light_title {
+  color: black;
+}
+
+.light_desc {
+  border-color: lightgray;
+}
+
+.light_image_container {
+  background-color: #f3f2f1;
+}
+
+.light_author_categ {
+  color: #676767;
+}
+
+.dark_title {
+  color: white;
+}
+
+.dark_desc {
+  color: white;
+  border-color: lightgray;
+}
+
+.dark_author_categ {
+  color: rgb(239, 223, 223);
+}
+
+.dark_image_container {
+  background-color: black;
+  border: 1px solid white;
 }

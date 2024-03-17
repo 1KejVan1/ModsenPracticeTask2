@@ -12,7 +12,6 @@ $bd-rad: 10px;
     width: 25px;
     height: 25px;
     padding: 5px;
-    background-color: white;
     border-top-right-radius: $bd-rad;
     border-bottom-right-radius: $bd-rad;
     border: none;
@@ -39,4 +38,14 @@ $bd-rad: 10px;
       outline: none;
     }
   }
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: rgb(5, 5, 62);
+  color: white;
 }

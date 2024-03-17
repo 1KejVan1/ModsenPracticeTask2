@@ -65,8 +65,12 @@
     }
   }
 
-  .favourites_and_theme {
+  .favourites {
     grid-row-start: 2;
     grid-column-start: 3;
+  }
+
+  .theme {
+    grid-row-start: 2;
   }
 }

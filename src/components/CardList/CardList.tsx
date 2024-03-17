@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import style from "./cardlist.module.scss";
 import Card from "../Card/Card";
-import { useAppSelect } from "../../hooks/redux";
 import { IBook } from "../../interfaces/IBook";
 
 interface Props {

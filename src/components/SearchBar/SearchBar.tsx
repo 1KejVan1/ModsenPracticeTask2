@@ -1,6 +1,8 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext } from "react";
 import { MdSearch } from "react-icons/md";
 import style from "./searchbar.module.scss";
+import classNames from "classnames";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 interface Props {
   showIcon?: boolean;
@@ -17,10 +19,14 @@ function SearchBar({
   onchange,
   setFetchData,
 }: Props): ReactElement {
+  const { theme } = useContext(ThemeContext);
   return (
     <div className={style.container}>
       <input
-        className={style.search}
+        className={classNames(
+          style.search,
+          theme === "light" ? style.light : style.dark
+        )}
         type="text"
         placeholder={placeholder}
         value={text}
@@ -32,7 +38,13 @@ function SearchBar({
         }}
       />
       {showIcon && (
-        <div className={style.bg_icon} onClick={() => setFetchData(true)}>
+        <div
+          className={classNames(
+            style.bg_icon,
+            theme === "light" ? style.light : style.dark
+          )}
+          onClick={() => setFetchData(true)}
+        >
           <MdSearch size={25} />
         </div>
       )}

@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState, useContext } from "react";
 import CardList from "../../components/CardList/CardList";
 import style from "./page.module.scss";
 import { useAppDispatch, useAppSelect } from "../../hooks/redux";
@@ -7,9 +7,12 @@ import { addBooks, changeLoadStatus } from "../../store/bookSlice";
 import { setStartIndex } from "../../store/searchSlice";
 import { getBooks } from "../../API/api";
 import Loader from "../../components/Loader/Loader";
+import classNames from "classnames";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 function MainPage(): ReactElement {
   const books = useAppSelect((state) => state.books);
+  const { theme } = useContext(ThemeContext);
   const search = useAppSelect((state) => state.search);
   const [endIndex, setEndIndex] = useState<number>(
     (search.startIndex as number) + 30 > (books.quantity_items as number)
@@ -45,14 +48,19 @@ function MainPage(): ReactElement {
   }
 
   return (
-    <div className={style.container}>
+    <div
+      className={classNames(
+        style.container,
+        theme === "light" ? style.light : style.dark
+      )}
+    >
       {endIndex === 30 &&
       books.isLoaded === false &&
       books.isLoaded !== undefined ? (
         <Loader />
       ) : (
         <>
-          {books && (
+          {books.quantity_items && (
             <div className={style.quantity_container}>
               Found {books.quantity_items} results
             </div>
@@ -60,8 +68,14 @@ function MainPage(): ReactElement {
           <CardList end={endIndex} books={books.books} />
           {books.quantity_items &&
             endIndex !== (books.quantity_items as number) && (
-              <div className={style.button_contaner}>
-                <button className={style.button} onClick={handleClick}>
+              <div className={style.button_container}>
+                <button
+                  className={classNames(
+                    style.button,
+                    theme === "light" ? style.light : style.button_dark
+                  )}
+                  onClick={handleClick}
+                >
                   Загрузить ещё
                 </button>
               </div>

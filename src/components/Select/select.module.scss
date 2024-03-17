@@ -15,6 +15,7 @@
 
   .select {
     border-radius: 10px;
+    border: none;
     font-size: large;
     width: 170px;
     height: 30px;
@@ -32,4 +33,14 @@
       cursor: pointer;
     }
   }
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: rgb(5, 5, 62);
+  color: white;
 }

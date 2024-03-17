@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 25px;
+  padding: 10px;
+  // margin: 0px 25px;
 
   .quantity_container {
     display: flex;
@@ -14,13 +15,13 @@
   }
 
   .button {
-    background-color: #f3f2f1;
     font-size: large;
     padding: 15px;
     border-radius: 10px;
     border: none;
     width: 200px;
     height: 50px;
+    margin-bottom: 25px;
     cursor: pointer;
     transition: 0.2s all;
 
@@ -28,4 +29,19 @@
       scale: 1.2;
     }
   }
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: rgb(2, 2, 38);
+  color: #f3f2f1;
+}
+
+.button_dark {
+  background-color: rgb(5, 5, 62);
+  color: #f3f2f1;
 }

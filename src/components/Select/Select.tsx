@@ -1,5 +1,7 @@
-import { ChangeEventHandler, ReactElement } from "react";
+import { ReactElement, useContext } from "react";
 import style from "./select.module.scss";
+import classNames from "classnames";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 interface IOption {
   title: string;
@@ -19,12 +21,16 @@ function Select({
   onchange,
   selectedValue,
 }: Props): ReactElement {
+  const { theme } = useContext(ThemeContext);
   return (
     <div className={style.container}>
       <label className={style.label}>{title}</label>
       <select
         value={selectedValue}
-        className={style.select}
+        className={classNames(
+          style.select,
+          theme === "light" ? style.light : style.dark
+        )}
         onChange={onchange}
       >
         {options.map((item) => (

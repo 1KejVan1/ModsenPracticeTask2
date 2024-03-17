@@ -10,6 +10,7 @@ import { setText, setCategory, setSort } from "../../store/searchSlice";
 import { useNavigate } from "react-router";
 import { setStartIndex } from "../../store/searchSlice";
 import Favourites from "../Favourites/Favourites";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
 function Header(): ReactElement {
   const search = useAppSelect((state) => state.search);
@@ -105,8 +106,11 @@ function Header(): ReactElement {
           selectedValue={search.sortingBy}
         />
       </div>
-      <div className={style.favourites_and_theme}>
+      <div className={style.favourites}>
         <Favourites />
+      </div>
+      <div className={style.theme}>
+        <ThemeSwitcher />
       </div>
     </header>
   );
