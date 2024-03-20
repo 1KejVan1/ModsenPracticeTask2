@@ -5,13 +5,14 @@ import MainPage from "../pages/MainPage/MainPage";
 import BookPage from "../pages/BookPage/BookPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import FavouriteBooksPage from "../pages/FavouriteBooksPage/FavouriteBooksPage";
+import { main, bookWithId, favourites } from "./Paths";
 function AppRouter(): ReactElement {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path={main} element={<Layout />}>
         <Route index element={<MainPage />} />
-        <Route path="book/:id" element={<BookPage />} />
-        <Route path="favourites" element={<FavouriteBooksPage />} />
+        <Route path={bookWithId} element={<BookPage />} />
+        <Route path={favourites} element={<FavouriteBooksPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

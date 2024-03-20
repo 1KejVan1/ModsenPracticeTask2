@@ -55,9 +55,9 @@ function Card(props: IBook): ReactElement {
       <div className={style.container_for_author_favourite}>
         <div className={style.author}>{props.authors && props.authors[0]}</div>
         {favouriteBooks.find((item) => item.id === props.id) === undefined ? (
-          <MdFavoriteBorder fill="red" size={24} onClick={(e) => addBook(e)} />
+          <MdFavoriteBorder fill="red" size={24} onClick={addBook} />
         ) : (
-          <MdFavorite fill="red" size={24} onClick={(e) => removeBook(e)} />
+          <MdFavorite fill="red" size={24} onClick={removeBook} />
         )}
       </div>
     </div>

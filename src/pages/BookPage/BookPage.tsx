@@ -11,7 +11,7 @@ function BookPage(): ReactElement {
   const params = useParams<string>();
   const { theme } = useContext(ThemeContext);
   const books = useAppSelect((state) => state.books);
-  const [book, setBook] = useState<IBook | undefined>(
+  const [book] = useState<IBook | undefined>(
     books.books.find((item) => item.id === params.id)
   );
 

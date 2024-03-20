@@ -1,5 +1,4 @@
 import { IBooks } from "../interfaces/IBook";
-
 interface Props {
   searchText: string;
   sortingBy?: string;
@@ -13,10 +12,12 @@ async function getBooks({
   category = "all",
   startIndex = 0,
 }: Props): Promise<IBooks> {
+  // const apiKey: string = process.env.REACT_APP_API_KEY as string;
+  const apiKey: string = "AIzaSyCu2Kd8qGqIU6-qZw0XNUxDIjJkhr4v2tA";
   let data = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${searchText}&orderBy=${sortingBy}${
       category ? `&subject=${category}` : ""
-    }&startIndex=${startIndex}&maxResults=30&key=AIzaSyCu2Kd8qGqIU6-qZw0XNUxDIjJkhr4v2tA`
+    }&startIndex=${startIndex}&maxResults=30&key=${apiKey}`
   ).then((res) => res.json());
 
   let info = data.items;

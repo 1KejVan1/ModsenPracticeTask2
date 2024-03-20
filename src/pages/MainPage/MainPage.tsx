@@ -1,4 +1,10 @@
-import { ReactElement, useEffect, useState, useContext } from "react";
+import {
+  ReactElement,
+  useEffect,
+  useState,
+  useContext,
+  useLayoutEffect,
+} from "react";
 import CardList from "../../components/CardList/CardList";
 import style from "./page.module.scss";
 import { useAppDispatch, useAppSelect } from "../../hooks/redux";
@@ -14,11 +20,7 @@ function MainPage(): ReactElement {
   const books = useAppSelect((state) => state.books);
   const { theme } = useContext(ThemeContext);
   const search = useAppSelect((state) => state.search);
-  const [endIndex, setEndIndex] = useState<number>(
-    (search.startIndex as number) + 30 > (books.quantity_items as number)
-      ? (books.quantity_items as number)
-      : (search.startIndex as number) + 30
-  );
+  const [endIndex, setEndIndex] = useState<number>(0);
   const dispatch = useAppDispatch();
   const [fetching, isLoaded, error] = useFetching(async () => {
     let data = await getBooks({
@@ -34,6 +36,14 @@ function MainPage(): ReactElement {
   useEffect(() => {
     dispatch(changeLoadStatus(isLoaded));
   }, [isLoaded]);
+
+  useLayoutEffect(() => {
+    if ((search.startIndex as number) + 30 > (books.quantity_items as number)) {
+      setEndIndex(books.quantity_items as number);
+    } else {
+      setEndIndex((search.startIndex as number) + 30);
+    }
+  }, []);
 
   async function handleClick() {
     setEndIndex((prev) => {
