@@ -57,43 +57,48 @@ function MainPage(): ReactElement {
     fetching();
   }
 
-  return (
-    <div
-      className={classNames(
-        style.container,
-        theme === "light" ? style.light : style.dark
-      )}
-    >
-      {endIndex === 30 &&
-      books.isLoaded === false &&
-      books.isLoaded !== undefined ? (
+  if (endIndex === 30 && books.isLoaded == false) {
+    return (
+      <div
+        className={classNames(
+          style.container,
+          theme === "light" ? style.light : style.dark
+        )}
+      >
         <Loader />
-      ) : (
-        <>
-          {books.quantity_items && (
-            <div className={style.quantity_container}>
-              Found {books.quantity_items} results
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className={classNames(
+          style.container,
+          theme === "light" ? style.light : style.dark
+        )}
+      >
+        {books.quantity_items && (
+          <div className={style.quantity_container}>
+            Found {books.quantity_items} results
+          </div>
+        )}
+        <CardList end={endIndex} books={books.books} />
+        {books.quantity_items &&
+          endIndex !== (books.quantity_items as number) && (
+            <div className={style.button_container}>
+              <button
+                className={classNames(
+                  style.button,
+                  theme === "light" ? style.button_light : style.button_dark
+                )}
+                onClick={handleClick}
+              >
+                Загрузить ещё
+              </button>
             </div>
           )}
-          <CardList end={endIndex} books={books.books} />
-          {books.quantity_items &&
-            endIndex !== (books.quantity_items as number) && (
-              <div className={style.button_container}>
-                <button
-                  className={classNames(
-                    style.button,
-                    theme === "light" ? style.light : style.button_dark
-                  )}
-                  onClick={handleClick}
-                >
-                  Загрузить ещё
-                </button>
-              </div>
-            )}
-        </>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default MainPage;

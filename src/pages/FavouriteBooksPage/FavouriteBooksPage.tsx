@@ -14,7 +14,14 @@ function FavouriteBooksPage(): ReactElement {
           Favorite books not found
         </h1>
       ) : (
-        <CardList books={books.books} end={books.quantity} />
+        <>
+          <h1
+            style={theme === "light" ? { color: "black" } : { color: "white" }}
+          >
+            Your favourites books
+          </h1>
+          <CardList books={books.books} end={books.quantity} />
+        </>
       )}
     </div>
   );

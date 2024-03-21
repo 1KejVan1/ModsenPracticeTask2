@@ -1,15 +1,15 @@
+import classNames from "classnames";
 import { ReactElement, useContext } from "react";
-import noimage from "../../assets/no-image.png";
-import style from "./card.module.scss";
-import { IBook } from "../../interfaces/IBook";
-import { useAppSelect, useAppDispatch } from "../../hooks/redux";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { ThemeContext } from "../../Context/ThemeContext";
+import noimage from "../../assets/no-image.png";
+import { useAppDispatch, useAppSelect } from "../../hooks/redux";
+import { IBook } from "../../interfaces/IBook";
 import {
   addFavouriteBook,
   removeFavouriteBook,
 } from "../../store/favouriteBooksSlice";
-import { ThemeContext } from "../../Context/ThemeContext";
-import classNames from "classnames";
+import style from "./card.module.scss";
 
 function Card(props: IBook): ReactElement {
   const favouriteBooks = useAppSelect((state) => state.favouriteBooks.books);

@@ -1,4 +1,8 @@
 $bd-rad: 10px;
+$darkTextColor: white;
+$darkBgColor: rgb(5, 5, 62);
+$lightTextColor: black;
+$lightBgColor: white;
 
 .container {
   display: flex;
@@ -41,11 +45,11 @@ $bd-rad: 10px;
 }
 
 .light {
-  background-color: white;
-  color: black;
+  background-color: $lightBgColor;
+  color: $lightTextColor;
 }
 
 .dark {
-  background-color: rgb(5, 5, 62);
-  color: white;
+  background-color: $darkBgColor;
+  color: $darkTextColor;
 }

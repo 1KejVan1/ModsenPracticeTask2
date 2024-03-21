@@ -14,31 +14,28 @@ async function getBooks({
 }: Props): Promise<IBooks> {
   // const apiKey: string = process.env.REACT_APP_API_KEY as string;
   const apiKey: string = "AIzaSyCu2Kd8qGqIU6-qZw0XNUxDIjJkhr4v2tA";
-  let data = await fetch(
+  const data = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${searchText}&orderBy=${sortingBy}${
       category ? `&subject=${category}` : ""
     }&startIndex=${startIndex}&maxResults=30&key=${apiKey}`
   ).then((res) => res.json());
 
-  let info = data.items;
-  let quantity: number = data.totalItems;
-  let result: IBooks = {
-    quantity_items: quantity,
-    books: [],
+  const result: IBooks = {
+    quantity_items: data.totalItems,
+    books: data.items.map((item: any) => {
+      return {
+        title: item.volumeInfo.title,
+        categories: item.volumeInfo.categories,
+        authors: item.volumeInfo.authors,
+        smallimage: item.volumeInfo?.imageLinks?.smallThumbnail,
+        bigimage: item.volumeInfo?.imageLinks?.thumbnail,
+        id: item.id,
+        description: item.volumeInfo?.description,
+      };
+    }),
     isLoaded: undefined,
   };
 
-  for (let i = 0; i < info.length; i++) {
-    result.books.push({
-      title: info[i].volumeInfo.title,
-      categories: info[i].volumeInfo.categories,
-      authors: info[i].volumeInfo.authors,
-      smallimage: info[i].volumeInfo?.imageLinks?.smallThumbnail,
-      bigimage: info[i].volumeInfo?.imageLinks?.thumbnail,
-      id: info[i].id,
-      description: info[i].volumeInfo?.description,
-    });
-  }
   return result;
 }
 

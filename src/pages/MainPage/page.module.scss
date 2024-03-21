@@ -1,3 +1,10 @@
+$lightTextColor: black;
+$lightBgColor: white;
+
+$darkTextColor: #f3f2f1;
+$darkBgColor: rgb(2, 2, 38);
+$darkButtonBgColor: rgb(0, 0, 84);
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,7 +12,6 @@
   justify-content: center;
   gap: 10px;
   padding: 10px;
-  // margin: 0px 25px;
 
   .quantity_container {
     display: flex;
@@ -32,16 +38,20 @@
 }
 
 .light {
-  background-color: white;
-  color: black;
+  background-color: $lightBgColor;
+  color: $lightTextColor;
 }
 
 .dark {
-  background-color: rgb(2, 2, 38);
-  color: #f3f2f1;
+  background-color: $darkBgColor;
+  color: $darkTextColor;
 }
 
 .button_dark {
-  background-color: rgb(5, 5, 62);
-  color: #f3f2f1;
+  background-color: $darkButtonBgColor;
+  color: $darkTextColor;
+}
+
+.button_light {
+  color: $lightTextColor;
 }
