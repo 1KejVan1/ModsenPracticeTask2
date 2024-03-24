@@ -4,7 +4,6 @@ import { IBook } from "../interfaces/IBook";
 
 const initialState: IFavouriteBooks = {
   books: [],
-  quantity: 0,
 };
 
 const favouriteBooksSlice = createSlice({
@@ -13,17 +12,20 @@ const favouriteBooksSlice = createSlice({
   reducers: {
     addFavouriteBook(state, action: PayloadAction<IBook>) {
       state.books.push(action.payload);
-      state.quantity++;
     },
     removeFavouriteBook(state, action: PayloadAction<string>) {
       return {
         books: state.books.filter((item) => item.id !== action.payload),
-        quantity: state.quantity - 1 < 0 ? 0 : state.quantity - 1,
+      };
+    },
+    addFavouriteBooks(state, action: PayloadAction<IBook[]>) {
+      return {
+        books: action.payload,
       };
     },
   },
 });
 
-export const { addFavouriteBook, removeFavouriteBook } =
+export const { addFavouriteBook, removeFavouriteBook, addFavouriteBooks } =
   favouriteBooksSlice.actions;
 export default favouriteBooksSlice.reducer;

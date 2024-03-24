@@ -10,16 +10,10 @@ function FavouriteBooksPage(): ReactElement {
   return (
     <div className={style.container}>
       {books.books.length === 0 ? (
-        <h1 style={theme === "light" ? { color: "black" } : { color: "white" }}>
-          Favorite books not found
-        </h1>
+        <h1 className={style[theme]}>Favorite books not found</h1>
       ) : (
         <>
-          <h1
-            style={theme === "light" ? { color: "black" } : { color: "white" }}
-          >
-            Your favourites books
-          </h1>
+          <h1 className={style[theme]}>Your favourites books</h1>
           <CardList books={books.books} end={books.quantity} />
         </>
       )}

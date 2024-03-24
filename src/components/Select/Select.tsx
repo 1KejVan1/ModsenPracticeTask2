@@ -27,14 +27,11 @@ function Select({
       <label className={style.label}>{title}</label>
       <select
         value={selectedValue}
-        className={classNames(
-          style.select,
-          theme === "light" ? style.light : style.dark
-        )}
+        className={classNames(style.select, style[theme])}
         onChange={onchange}
       >
-        {options.map((item) => (
-          <option key={Date.now() * Math.random()} value={item.value}>
+        {options.map((item, index) => (
+          <option key={Date.now() * Math.random() * index} value={item.value}>
             {item.title}
           </option>
         ))}

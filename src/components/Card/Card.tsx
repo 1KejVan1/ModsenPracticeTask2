@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactElement, useContext } from "react";
+import { ReactElement, useContext, useEffect } from "react";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { ThemeContext } from "../../Context/ThemeContext";
 import noimage from "../../assets/no-image.png";
@@ -7,9 +7,12 @@ import { useAppDispatch, useAppSelect } from "../../hooks/redux";
 import { IBook } from "../../interfaces/IBook";
 import {
   addFavouriteBook,
+  addFavouriteBooks,
   removeFavouriteBook,
 } from "../../store/favouriteBooksSlice";
 import style from "./card.module.scss";
+import { Theme } from "../../enums/Theme";
+import { getFavBooks, setFavBooks } from "../../scripts/getAndSetFavBooks";
 
 function Card(props: IBook): ReactElement {
   const favouriteBooks = useAppSelect((state) => state.favouriteBooks.books);
@@ -28,13 +31,12 @@ function Card(props: IBook): ReactElement {
     dispatch(removeFavouriteBook(props.id));
   }
 
+  useEffect(() => {
+    // setFavBooks(favouriteBooks);
+  }, [favouriteBooks]);
+
   return (
-    <div
-      className={classNames(
-        style.container,
-        theme === "light" ? style.light : style.dark
-      )}
-    >
+    <div className={classNames(style.container, style[theme])}>
       <div className={style.image_container}>
         <img
           src={props.smallimage ? props.smallimage : noimage}
@@ -47,7 +49,7 @@ function Card(props: IBook): ReactElement {
       <div
         className={classNames(
           style.title,
-          theme === "light" ? style.light_title : style.dark
+          theme === Theme.Light ? style.light_title : style[theme]
         )}
       >
         {props.title}

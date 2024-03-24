@@ -5,16 +5,17 @@ import {
   useContext,
   useLayoutEffect,
 } from "react";
-import CardList from "../../components/CardList/CardList";
+import CardList from "@components/CardList/CardList";
 import style from "./page.module.scss";
 import { useAppDispatch, useAppSelect } from "../../hooks/redux";
 import useFetching from "../../hooks/fetchBooks";
 import { addBooks, changeLoadStatus } from "../../store/bookSlice";
 import { setStartIndex } from "../../store/searchSlice";
-import { getBooks } from "../../API/api";
+import { getBooks } from "@API/api";
 import Loader from "../../components/Loader/Loader";
 import classNames from "classnames";
 import { ThemeContext } from "../../Context/ThemeContext";
+import { Theme } from "../../enums/Theme";
 
 function MainPage(): ReactElement {
   const books = useAppSelect((state) => state.books);
@@ -59,23 +60,13 @@ function MainPage(): ReactElement {
 
   if (endIndex === 30 && books.isLoaded == false) {
     return (
-      <div
-        className={classNames(
-          style.container,
-          theme === "light" ? style.light : style.dark
-        )}
-      >
+      <div className={classNames(style.container, style[theme])}>
         <Loader />
       </div>
     );
   } else {
     return (
-      <div
-        className={classNames(
-          style.container,
-          theme === "light" ? style.light : style.dark
-        )}
-      >
+      <div className={classNames(style.container, style[theme])}>
         {books.quantity_items && (
           <div className={style.quantity_container}>
             Found {books.quantity_items} results
@@ -88,7 +79,7 @@ function MainPage(): ReactElement {
               <button
                 className={classNames(
                   style.button,
-                  theme === "light" ? style.button_light : style.button_dark
+                  theme === Theme.Light ? style.button_light : style.button_dark
                 )}
                 onClick={handleClick}
               >

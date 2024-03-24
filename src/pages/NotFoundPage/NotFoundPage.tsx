@@ -6,12 +6,7 @@ import classNames from "classnames";
 function NotFoundPage(): ReactElement {
   const { theme } = useContext(ThemeContext);
   return (
-    <div
-      className={classNames(
-        style.container,
-        theme === "light" ? style.light : style.dark
-      )}
-    >
+    <div className={classNames(style.container, style[theme])}>
       The page doesn't exist
     </div>
   );

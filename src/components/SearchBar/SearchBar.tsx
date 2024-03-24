@@ -23,10 +23,7 @@ function SearchBar({
   return (
     <div className={style.container}>
       <input
-        className={classNames(
-          style.search,
-          theme === "light" ? style.light : style.dark
-        )}
+        className={classNames(style.search, style[theme])}
         type="text"
         placeholder={placeholder}
         value={text}
@@ -39,10 +36,7 @@ function SearchBar({
       />
       {showIcon && (
         <div
-          className={classNames(
-            style.bg_icon,
-            theme === "light" ? style.light : style.dark
-          )}
+          className={classNames(style.bg_icon, style[theme])}
           onClick={() => setFetchData(true)}
         >
           <MdSearch size={25} />

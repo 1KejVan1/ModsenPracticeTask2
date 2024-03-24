@@ -1,15 +1,9 @@
 import React from "react";
+import { Theme } from "../enums/Theme";
 
 interface Context {
-  theme: string;
-  switchTheme: React.Dispatch<React.SetStateAction<string>>;
+  theme: Theme | string;
+  setTheme: React.Dispatch<React.SetStateAction<Theme | string>>;
 }
 
-// function switchTheme() {
-//   the;
-// }
-
-export const ThemeContext = React.createContext<Context>({
-  theme: "",
-  switchTheme: () => {},
-});
+export const ThemeContext = React.createContext<Context>({} as Context);

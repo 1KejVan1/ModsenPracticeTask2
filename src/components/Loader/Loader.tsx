@@ -5,14 +5,7 @@ import classNames from "classnames";
 
 function Loader(): ReactElement {
   const { theme } = useContext(ThemeContext);
-  return (
-    <span
-      className={classNames(
-        style.loader,
-        theme === "light" ? style.light : style.dark
-      )}
-    ></span>
-  );
+  return <span className={classNames(style.loader, style[theme])}></span>;
 }
 
 export default Loader;
