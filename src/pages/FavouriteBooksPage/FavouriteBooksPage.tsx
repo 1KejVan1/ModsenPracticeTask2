@@ -1,8 +1,8 @@
 import { ReactElement, useContext } from "react";
-import CardList from "../../components/CardList/CardList";
+import CardList from "@components/CardList/CardList";
 import style from "./page.module.scss";
-import { useAppSelect } from "../../hooks/redux";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useAppSelect } from "@hooks/redux";
+import { ThemeContext } from "@Context/ThemeContext";
 
 function FavouriteBooksPage(): ReactElement {
   const books = useAppSelect((state) => state.favouriteBooks);

@@ -1,76 +1,66 @@
 import { IBook } from "../interfaces/IBook";
 
 export function setFavBooks(favbooks: IBook[]) {
-  debugger;
   let str: string[][] = new Array(favbooks.length);
-  let result: string = "";
-  for (let i = 0; i < favbooks.length; i++) {
-    for (const item in Object.values(favbooks[i])) {
-      str[i].push(item);
-    }
-  }
 
   for (let i = 0; i < str.length; i++) {
+    str[i] = [];
+  }
+  let result: string = "";
+  for (let i = 0; i < favbooks.length; i++) {
+    let x = Object.values(favbooks[i]);
+
+    for (let j = 0; j < x.length; j++) {
+      if (favbooks[i].authors === x[j]) {
+        str[i].push((x[j] as string[]).join(";"));
+      } else if (favbooks[i].categories === x[j]) {
+        str[i].push((x[j] as string[]).join(";"));
+      } else {
+        str[i].push(`${x[j]}`);
+      }
+    }
+  }
+  for (let i = 0; i < str.length; i++) {
     if (i + 1 === str.length) {
-      result += str.join(";") + ".";
+      result += str[i].join("|");
     } else {
-      result += str.join(";");
+      result += str[i].join("|") + "|";
     }
   }
 
-  //   favbooks.map((item, index) => {
-  //     if (index + 1 === favbooks.length) {
-  //       result += `${item.authors.map((ath, index) => {
-  //         if (index + 1 === item.authors.length) {
-  //           return `${ath}`;
-  //         } else {
-  //           return `${ath},`;
-  //         }
-  //       })};${item.bigimage};${item.categories.map((cat, index) => {
-  //         if (index + 1 === item.categories.length) {
-  //           return `${cat}`;
-  //         } else {
-  //           return `${cat},`;
-  //         }
-  //       })};${item.description};${item.id};${item.smallimage};${item.title}`;
-  //     } else {
-  //       result += `${item.authors.map((ath, index) => {
-  //         if (index + 1 === item.authors.length) {
-  //           return `${ath}`;
-  //         } else {
-  //           return `${ath},`;
-  //         }
-  //       })};${item.bigimage};${item.categories.map((cat, index) => {
-  //         if (index + 1 === item.categories.length) {
-  //           return `${cat}`;
-  //         } else {
-  //           return `${cat},`;
-  //         }
-  //       })};${item.description};${item.id};${item.smallimage};${item.title}.`;
-  //     }
-  //   });
-
   localStorage.setItem("favBooks", result);
-  console.log(localStorage.getItem("favBooks"));
 }
 
 export function getFavBooks(): IBook[] {
-  const parcedBooks = localStorage.getItem("favBooks")?.split(".");
+  const parcedBooks = localStorage.getItem("favBooks")?.split("|");
 
-  if (parcedBooks) {
+  if (parcedBooks && parcedBooks[0] !== "") {
     let books: IBook[] = [];
-    for (let i = 0; i < parcedBooks.length; i++) {
-      const str: string[] = parcedBooks[i].split(";");
-      const authors = str[0].split(",");
-      const categories = str[2].split(",");
+    for (let i = 0; i < parcedBooks.length; i += 6) {
+      let temp = parcedBooks.slice(i, i + 6);
+      let title: string = "";
+      let authors: string[] = [];
+      let smallImage: string = "";
+      let categories: string[] = [];
+      let id: string = "";
+      let description: string = "";
+
+      for (let i = 0; i < temp.length; i++) {
+        if (i === 0) title = temp[i];
+        else if (i === 1) authors = temp[i].split(";");
+        else if (i === 2) smallImage = temp[i];
+        if (i === 3) categories = temp[i].split(";");
+        else if (i === 4) id = temp[i];
+        if (i === 5) description = temp[i];
+      }
+
       books.push({
-        authors: authors.length === 0 ? [str[0]] : authors,
-        bigimage: str[1],
-        categories: categories.length === 0 ? [str[2]] : categories,
-        description: str[3],
-        id: str[4],
-        smallimage: str[5],
-        title: str[6],
+        title: title,
+        authors: authors,
+        smallimage: smallImage,
+        categories: categories,
+        id: id,
+        description: description,
       });
     }
 

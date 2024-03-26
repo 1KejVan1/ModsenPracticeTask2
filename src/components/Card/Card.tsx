@@ -3,16 +3,15 @@ import { ReactElement, useContext, useEffect } from "react";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { ThemeContext } from "../../Context/ThemeContext";
 import noimage from "../../assets/no-image.png";
-import { useAppDispatch, useAppSelect } from "../../hooks/redux";
-import { IBook } from "../../interfaces/IBook";
+import { useAppDispatch, useAppSelect } from "@hooks/redux";
+import { IBook } from "@interfaces/IBook";
 import {
   addFavouriteBook,
-  addFavouriteBooks,
   removeFavouriteBook,
 } from "../../store/favouriteBooksSlice";
 import style from "./card.module.scss";
 import { Theme } from "../../enums/Theme";
-import { getFavBooks, setFavBooks } from "../../scripts/getAndSetFavBooks";
+import { setFavBooks } from "../../scripts/getAndSetFavBooks";
 
 function Card(props: IBook): ReactElement {
   const favouriteBooks = useAppSelect((state) => state.favouriteBooks.books);
@@ -32,7 +31,7 @@ function Card(props: IBook): ReactElement {
   }
 
   useEffect(() => {
-    // setFavBooks(favouriteBooks);
+    setFavBooks(favouriteBooks);
   }, [favouriteBooks]);
 
   return (

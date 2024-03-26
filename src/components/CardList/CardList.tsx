@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import style from "./cardlist.module.scss";
-import Card from "../Card/Card";
-import { IBook } from "../../interfaces/IBook";
+import Card from "@components/Card/Card";
+import { IBook } from "@interfaces/IBook";
 
 interface Props {
   end: number;
@@ -20,6 +20,7 @@ function CardList({ end = 30, books = [] }: Props): ReactElement {
             smallimage={item.smallimage}
             categories={item.categories}
             id={item.id}
+            description={item.description}
           />
         </Link>
       ))}

@@ -4,21 +4,27 @@ import React, {
   useLayoutEffect,
   useState,
 } from "react";
-import { Theme } from "../../enums/Theme";
-import { ThemeContext } from "../../Context/ThemeContext";
-import { getTheme } from "../../scripts/getTheme";
-import { getFavBooks } from "../../scripts/getAndSetFavBooks";
+import { Theme } from "@enums/Theme";
+import { ThemeContext } from "@Context/ThemeContext";
+import { getTheme } from "@scripts/getTheme";
+import { getFavBooks } from "@scripts/getAndSetFavBooks";
+import { useAppDispatch } from "@hooks/redux";
+import { addFavouriteBooks } from "@store/favouriteBooksSlice";
 
 interface Props {
   children: React.ReactNode;
 }
 
-export function ThemeProvider({ children }: Props) {
+export function ThemeProvider({ children }: Props): ReactElement {
   const [theme, setTheme] = useState<Theme | string>("");
+  const dispatch = useAppDispatch();
 
   useLayoutEffect(() => {
     setTheme(getTheme());
-    // console.log(localStorage.getItem("favBooks"));
+  }, []);
+
+  useEffect(() => {
+    dispatch(addFavouriteBooks(getFavBooks()));
   }, []);
 
   useEffect(() => {

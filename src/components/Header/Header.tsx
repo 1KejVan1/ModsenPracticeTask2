@@ -1,16 +1,16 @@
-import { ReactElement, useEffect, useState } from "react";
 import style from "./header.module.scss";
-import SearchBar from "../SearchBar/SearchBar";
-import Select from "../Select/Select";
-import { useAppDispatch, useAppSelect } from "../../hooks/redux";
-import useFetching from "../../hooks/fetchBooks";
-import { getBooks } from "../../API/api";
-import { changeLoadStatus, resetBooks } from "../../store/bookSlice";
-import { setText, setCategory, setSort } from "../../store/searchSlice";
+import SearchBar from "@components/SearchBar/SearchBar";
+import Select from "@components/Select/Select";
+import { useAppDispatch, useAppSelect } from "@hooks/redux";
+import { ReactElement, useEffect, useState } from "react";
+import useFetching from "@hooks/fetchBooks";
+import { getBooks } from "@API/api";
+import { changeLoadStatus, resetBooks } from "@store/bookSlice";
+import { setText, setCategory, setSort } from "@store/searchSlice";
 import { useNavigate } from "react-router";
-import { setStartIndex } from "../../store/searchSlice";
-import Favourites from "../Favourites/Favourites";
-import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
+import { setStartIndex } from "@store/searchSlice";
+import Favourites from "@components/Favourites/Favourites";
+import ThemeSwitcher from "@components/ThemeSwitcher/ThemeSwitcher";
 
 function Header(): ReactElement {
   const search = useAppSelect((state) => state.search);

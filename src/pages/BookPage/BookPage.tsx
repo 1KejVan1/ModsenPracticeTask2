@@ -1,20 +1,27 @@
-import { ReactElement, useContext, useState } from "react";
+import { ReactElement, useContext, useLayoutEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useAppSelect } from "../../hooks/redux";
-import { IBook } from "../../interfaces/IBook";
+import { useAppSelect } from "@hooks/redux";
+import { IBook } from "@interfaces/IBook";
 import style from "./bookpage.module.scss";
 import BookDoesntExistPage from "../BookDoesntExistPage/BookDoesntExistsPage";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { ThemeContext } from "@Context/ThemeContext";
 import classNames from "classnames";
-import { Theme } from "../../enums/Theme";
+import { Theme } from "@enums/Theme";
 
 function BookPage(): ReactElement {
   const params = useParams<string>();
   const { theme } = useContext(ThemeContext);
-  const books = useAppSelect((state) => state.books);
-  const [book] = useState<IBook | undefined>(
-    books.books.find((item) => item.id === params.id)
-  );
+  const books = useAppSelect((state) => state.books.books);
+  const favBooks = useAppSelect((state) => state.favouriteBooks.books);
+  const [book, setBook] = useState<IBook | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    let book: IBook | undefined = books.find((item) => item.id === params.id);
+
+    if (!book) {
+      setBook(favBooks.find((item) => item.id === params.id));
+    }
+  }, [favBooks]);
 
   if (book === undefined) {
     return <BookDoesntExistPage />;
@@ -29,7 +36,7 @@ function BookPage(): ReactElement {
               : style.dark_image_container
           )}
         >
-          <img className={style.image} src={book.bigimage} alt={book.title} />
+          <img className={style.image} src={book.smallimage} alt={book.title} />
         </div>
         <div className={style.details_container}>
           <div

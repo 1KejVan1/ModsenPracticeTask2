@@ -7,15 +7,15 @@ import {
 } from "react";
 import CardList from "@components/CardList/CardList";
 import style from "./page.module.scss";
-import { useAppDispatch, useAppSelect } from "../../hooks/redux";
-import useFetching from "../../hooks/fetchBooks";
-import { addBooks, changeLoadStatus } from "../../store/bookSlice";
-import { setStartIndex } from "../../store/searchSlice";
+import { useAppDispatch, useAppSelect } from "@hooks/redux";
+import useFetching from "@hooks/fetchBooks";
+import { addBooks, changeLoadStatus } from "@store/bookSlice";
+import { setStartIndex } from "@store/searchSlice";
 import { getBooks } from "@API/api";
-import Loader from "../../components/Loader/Loader";
+import Loader from "@components/Loader/Loader";
 import classNames from "classnames";
-import { ThemeContext } from "../../Context/ThemeContext";
-import { Theme } from "../../enums/Theme";
+import { ThemeContext } from "@Context/ThemeContext";
+import { Theme } from "@enums/Theme";
 
 function MainPage(): ReactElement {
   const books = useAppSelect((state) => state.books);
