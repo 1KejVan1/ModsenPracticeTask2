@@ -1,4 +1,5 @@
 import { IBooks } from "../interfaces/IBook";
+
 interface Props {
   searchText: string;
   sortingBy?: string;
@@ -17,7 +18,7 @@ async function getBooks({
   const data = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${searchText}&orderBy=${sortingBy}${
       category ? `&subject=${category}` : ""
-    }&startIndex=${startIndex}&maxResults=30&key=${apiKey}`
+    }&startIndex=${startIndex}&maxResults=30&key=${apiKey}`,
   ).then((res) => res.json());
 
   const result: IBooks = {

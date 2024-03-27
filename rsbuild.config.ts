@@ -1,6 +1,6 @@
 import { defineConfig } from "@rsbuild/core";
-import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginNodePolyfill } from "@rsbuild/plugin-node-polyfill";
+import { pluginReact } from "@rsbuild/plugin-react";
 
 export default defineConfig({
   plugins: [pluginReact(), pluginNodePolyfill()],
@@ -19,6 +19,7 @@ export default defineConfig({
       "@hooks/*": ["./src/hooks/*"],
       "@enums/*": ["./src/enums/*"],
       "@Context/*": ["./src/Context/*"],
+      "@assets/*": ["./src/assets/*"],
     },
   },
 });

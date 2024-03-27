@@ -1,7 +1,9 @@
 import { ReactElement, useContext } from "react";
-import style from "./loader.module.scss";
+
 import { ThemeContext } from "@Context/ThemeContext";
 import classNames from "classnames";
+
+import style from "./loader.module.scss";
 
 function Loader(): ReactElement {
   const { theme } = useContext(ThemeContext);

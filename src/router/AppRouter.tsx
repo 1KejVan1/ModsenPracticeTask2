@@ -1,11 +1,14 @@
 import { ReactElement } from "react";
-import { Routes, Route } from "react-router";
+
+import { Route, Routes } from "react-router";
+
 import Layout from "../components/Layout/Layout";
-import MainPage from "../pages/MainPage/MainPage";
 import BookPage from "../pages/BookPage/BookPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import FavouriteBooksPage from "../pages/FavouriteBooksPage/FavouriteBooksPage";
-import { main, bookWithId, favourites } from "./Paths";
+import MainPage from "../pages/MainPage/MainPage";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import { bookWithId, favourites, main } from "./Paths";
+
 function AppRouter(): ReactElement {
   return (
     <Routes>

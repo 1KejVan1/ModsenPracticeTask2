@@ -1,16 +1,18 @@
-import style from "./header.module.scss";
+import { ReactElement, useEffect, useState } from "react";
+
+import { getBooks } from "@API/api";
+import Favourites from "@components/Favourites/Favourites";
 import SearchBar from "@components/SearchBar/SearchBar";
 import Select from "@components/Select/Select";
-import { useAppDispatch, useAppSelect } from "@hooks/redux";
-import { ReactElement, useEffect, useState } from "react";
-import useFetching from "@hooks/fetchBooks";
-import { getBooks } from "@API/api";
-import { changeLoadStatus, resetBooks } from "@store/bookSlice";
-import { setText, setCategory, setSort } from "@store/searchSlice";
-import { useNavigate } from "react-router";
-import { setStartIndex } from "@store/searchSlice";
-import Favourites from "@components/Favourites/Favourites";
 import ThemeSwitcher from "@components/ThemeSwitcher/ThemeSwitcher";
+import useFetching from "@hooks/fetchBooks";
+import { useAppDispatch, useAppSelect } from "@hooks/redux";
+import { changeLoadStatus, resetBooks } from "@store/bookSlice";
+import { setCategory, setSort, setText } from "@store/searchSlice";
+import { setStartIndex } from "@store/searchSlice";
+import { useNavigate } from "react-router";
+
+import style from "./header.module.scss";
 
 function Header(): ReactElement {
   const search = useAppSelect((state) => state.search);

@@ -1,7 +1,9 @@
 import { ReactElement, useContext } from "react";
-import style from "./select.module.scss";
-import classNames from "classnames";
+
 import { ThemeContext } from "@Context/ThemeContext";
+import classNames from "classnames";
+
+import style from "./select.module.scss";
 
 interface IOption {
   title: string;

@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IFavouriteBooks } from "../interfaces/IFavouriteBooks";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
 import { IBook } from "../interfaces/IBook";
+import { IFavouriteBooks } from "../interfaces/IFavouriteBooks";
 
 const initialState: IFavouriteBooks = {
   books: [],

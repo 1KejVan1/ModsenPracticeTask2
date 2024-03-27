@@ -1,7 +1,9 @@
 import { ReactElement } from "react";
+
 import { MdFavorite } from "react-icons/md";
-import style from "./favourites.module.scss";
 import { Link } from "react-router-dom";
+
+import style from "./favourites.module.scss";
 
 function Favourites(): ReactElement {
   return (

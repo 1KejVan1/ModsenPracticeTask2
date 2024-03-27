@@ -1,8 +1,10 @@
 import { ReactElement, useContext } from "react";
-import style from "./switcher.module.scss";
+
 import { ThemeContext } from "@Context/ThemeContext";
-import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { Theme } from "@enums/Theme";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
+
+import style from "./switcher.module.scss";
 
 function ThemeSwitcher(): ReactElement {
   const { theme, setTheme } = useContext(ThemeContext);

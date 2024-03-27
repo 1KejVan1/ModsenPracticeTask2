@@ -4,11 +4,12 @@ import React, {
   useLayoutEffect,
   useState,
 } from "react";
-import { Theme } from "@enums/Theme";
+
 import { ThemeContext } from "@Context/ThemeContext";
-import { getTheme } from "@scripts/getTheme";
-import { getFavBooks } from "@scripts/getAndSetFavBooks";
+import { Theme } from "@enums/Theme";
 import { useAppDispatch } from "@hooks/redux";
+import { getFavBooks } from "@scripts/getAndSetFavBooks";
+import { getTheme } from "@scripts/getTheme";
 import { addFavouriteBooks } from "@store/favouriteBooksSlice";
 
 interface Props {

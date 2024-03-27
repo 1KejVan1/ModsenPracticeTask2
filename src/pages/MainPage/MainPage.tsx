@@ -1,21 +1,23 @@
 import {
   ReactElement,
-  useEffect,
-  useState,
   useContext,
+  useEffect,
   useLayoutEffect,
+  useState,
 } from "react";
+
+import { getBooks } from "@API/api";
+import { ThemeContext } from "@Context/ThemeContext";
 import CardList from "@components/CardList/CardList";
-import style from "./page.module.scss";
-import { useAppDispatch, useAppSelect } from "@hooks/redux";
+import Loader from "@components/Loader/Loader";
+import { Theme } from "@enums/Theme";
 import useFetching from "@hooks/fetchBooks";
+import { useAppDispatch, useAppSelect } from "@hooks/redux";
 import { addBooks, changeLoadStatus } from "@store/bookSlice";
 import { setStartIndex } from "@store/searchSlice";
-import { getBooks } from "@API/api";
-import Loader from "@components/Loader/Loader";
 import classNames from "classnames";
-import { ThemeContext } from "@Context/ThemeContext";
-import { Theme } from "@enums/Theme";
+
+import style from "./page.module.scss";
 
 function MainPage(): ReactElement {
   const books = useAppSelect((state) => state.books);
@@ -79,7 +81,9 @@ function MainPage(): ReactElement {
               <button
                 className={classNames(
                   style.button,
-                  theme === Theme.Light ? style.button_light : style.button_dark
+                  theme === Theme.Light
+                    ? style.button_light
+                    : style.button_dark,
                 )}
                 onClick={handleClick}
               >

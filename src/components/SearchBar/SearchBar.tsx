@@ -1,8 +1,10 @@
 import React, { ReactElement, useContext } from "react";
-import { MdSearch } from "react-icons/md";
-import style from "./searchbar.module.scss";
-import classNames from "classnames";
+
 import { ThemeContext } from "@Context/ThemeContext";
+import classNames from "classnames";
+import { MdSearch } from "react-icons/md";
+
+import style from "./searchbar.module.scss";
 
 interface Props {
   showIcon?: boolean;

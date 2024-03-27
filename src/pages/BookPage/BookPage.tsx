@@ -1,12 +1,14 @@
 import { ReactElement, useContext, useLayoutEffect, useState } from "react";
-import { useParams } from "react-router";
+
+import { ThemeContext } from "@Context/ThemeContext";
+import { Theme } from "@enums/Theme";
 import { useAppSelect } from "@hooks/redux";
 import { IBook } from "@interfaces/IBook";
-import style from "./bookpage.module.scss";
-import BookDoesntExistPage from "../BookDoesntExistPage/BookDoesntExistsPage";
-import { ThemeContext } from "@Context/ThemeContext";
 import classNames from "classnames";
-import { Theme } from "@enums/Theme";
+import { useParams } from "react-router";
+
+import BookDoesntExistPage from "../BookDoesntExistPage/BookDoesntExistsPage";
+import style from "./bookpage.module.scss";
 
 function BookPage(): ReactElement {
   const params = useParams<string>();
@@ -20,6 +22,8 @@ function BookPage(): ReactElement {
 
     if (!book) {
       setBook(favBooks.find((item) => item.id === params.id));
+    } else {
+      setBook(book);
     }
   }, [favBooks]);
 
@@ -33,7 +37,7 @@ function BookPage(): ReactElement {
             style.image_container,
             theme === Theme.Light
               ? style.light_image_container
-              : style.dark_image_container
+              : style.dark_image_container,
           )}
         >
           <img className={style.image} src={book.smallimage} alt={book.title} />
@@ -44,7 +48,7 @@ function BookPage(): ReactElement {
               style.categories,
               theme === Theme.Light
                 ? style.light_author_categ
-                : style.dark_author_categ
+                : style.dark_author_categ,
             )}
           >
             {book.categories ? (
@@ -64,7 +68,7 @@ function BookPage(): ReactElement {
           <div
             className={classNames(
               style.title,
-              theme === Theme.Light ? style.light_title : style.dark_title
+              theme === Theme.Light ? style.light_title : style.dark_title,
             )}
           >
             {book.title}
@@ -74,7 +78,7 @@ function BookPage(): ReactElement {
               style.authors,
               theme === Theme.Light
                 ? style.light_author_categ
-                : style.dark_author_categ
+                : style.dark_author_categ,
             )}
           >
             {book.authors ? (
@@ -94,7 +98,7 @@ function BookPage(): ReactElement {
           <div
             className={classNames(
               style.description,
-              theme === Theme.Light ? style.light_desc : style.dark_desc
+              theme === Theme.Light ? style.light_desc : style.dark_desc,
             )}
           >
             {book.description ? (
