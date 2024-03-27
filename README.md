@@ -26,7 +26,7 @@
 
 **Примерный вид приложения**
 
-![image](./js-react.png)
-![image](./js-react1.png)
+![image](./src/assets/js-react.png)
+![image](./src/assets/js-react1.png)
 
 ---
