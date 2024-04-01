@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import Card from "@components/CardList/Card/Card";
+import Card from "@components/Card/Card";
 import { IBook } from "@interfaces/IBook";
 import { Link } from "react-router-dom";
 
