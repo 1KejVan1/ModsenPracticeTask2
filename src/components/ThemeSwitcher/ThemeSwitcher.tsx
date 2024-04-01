@@ -1,6 +1,6 @@
 import { ReactElement, useContext } from "react";
 
-import { ThemeContext } from "@Context/ThemeContext";
+import { ThemeContext } from "@context/ThemeContext";
 import { Theme } from "@enums/Theme";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 

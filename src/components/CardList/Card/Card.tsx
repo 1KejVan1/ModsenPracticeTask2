@@ -1,7 +1,7 @@
 import { ReactElement, useContext, useEffect } from "react";
 
-import { ThemeContext } from "@Context/ThemeContext";
 import noimage from "@assets/no-image.png";
+import { ThemeContext } from "@context/ThemeContext";
 import { Theme } from "@enums/Theme";
 import { useAppDispatch, useAppSelect } from "@hooks/redux";
 import { IBook } from "@interfaces/IBook";

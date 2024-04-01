@@ -1,7 +1,7 @@
 import { ReactElement, useContext } from "react";
 
-import { ThemeContext } from "@Context/ThemeContext";
 import CardList from "@components/CardList/CardList";
+import { ThemeContext } from "@context/ThemeContext";
 import { useAppSelect } from "@hooks/redux";
 
 import style from "./page.module.scss";

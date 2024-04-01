@@ -1,6 +1,6 @@
 import { ReactElement, useContext } from "react";
 
-import { ThemeContext } from "@Context/ThemeContext";
+import { ThemeContext } from "@context/ThemeContext";
 import classNames from "classnames";
 
 import style from "./notfoundpage.module.scss";

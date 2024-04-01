@@ -1,6 +1,6 @@
 import React, { ReactElement, useContext } from "react";
 
-import { ThemeContext } from "@Context/ThemeContext";
+import { ThemeContext } from "@context/ThemeContext";
 import classNames from "classnames";
 import { MdSearch } from "react-icons/md";
 

@@ -8,9 +8,9 @@ import {
 } from "react";
 
 import { getBooks } from "@API/api";
-import { ThemeContext } from "@Context/ThemeContext";
 import CardList from "@components/CardList/CardList";
 import Loader from "@components/Loader/Loader";
+import { ThemeContext } from "@context/ThemeContext";
 import { Theme } from "@enums/Theme";
 import useFetching from "@hooks/fetchBooks";
 import { useAppDispatch, useAppSelect } from "@hooks/redux";
