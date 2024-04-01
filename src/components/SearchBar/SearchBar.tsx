@@ -1,9 +1,9 @@
 import React, { ReactElement, useContext } from "react";
 
-import { ThemeContext } from "@context/ThemeContext";
 import classNames from "classnames";
 import { MdSearch } from "react-icons/md";
 
+import { ThemeContext } from "../../context/ThemeContext";
 import style from "./searchbar.module.scss";
 
 interface Props {

@@ -1,8 +1,8 @@
 import { ReactElement, useContext } from "react";
 
-import { ThemeContext } from "@context/ThemeContext";
 import classNames from "classnames";
 
+import { ThemeContext } from "../../context/ThemeContext";
 import style from "./select.module.scss";
 
 interface IOption {

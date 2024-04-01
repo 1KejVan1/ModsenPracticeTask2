@@ -1,12 +1,12 @@
 import { ReactElement, useContext, useLayoutEffect, useState } from "react";
 
-import { ThemeContext } from "@context/ThemeContext";
 import { Theme } from "@enums/Theme";
 import { useAppSelect } from "@hooks/redux";
 import { IBook } from "@interfaces/IBook";
 import classNames from "classnames";
 import { useParams } from "react-router";
 
+import { ThemeContext } from "../../context/ThemeContext";
 import BookDoesntExistPage from "../BookDoesntExistPage/BookDoesntExistsPage";
 import style from "./bookpage.module.scss";
 
