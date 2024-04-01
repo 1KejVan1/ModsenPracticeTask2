@@ -18,7 +18,7 @@ export default defineConfig({
       "@interfaces/*": ["./src/interfaces/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@enums/*": ["./src/enums/*"],
-      "@Context/*": ["./src/Context/*"],
+      "@Context/*": ["./src/context/*"],
       "@assets/*": ["./src/assets/*"],
     },
   },
