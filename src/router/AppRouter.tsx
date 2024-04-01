@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 
+import Layout from "@components/Layout/Layout";
+import BookPage from "@pages/BookPage/BookPage";
+import FavouriteBooksPage from "@pages/FavouriteBooksPage/FavouriteBooksPage";
+import MainPage from "@pages/MainPage/MainPage";
+import NotFoundPage from "@pages/NotFoundPage/NotFoundPage";
 import { Route, Routes } from "react-router";
 
-import Layout from "../components/Layout/Layout";
-import BookPage from "../pages/BookPage/BookPage";
-import FavouriteBooksPage from "../pages/FavouriteBooksPage/FavouriteBooksPage";
-import MainPage from "../pages/MainPage/MainPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import { bookWithId, favourites, main } from "./Paths";
 
 function AppRouter(): ReactElement {

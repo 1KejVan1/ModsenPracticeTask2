@@ -16,7 +16,7 @@ function FavouriteBooksPage(): ReactElement {
       ) : (
         <>
           <h1 className={style[theme]}>Your favourites books</h1>
-          <CardList books={books.books} end={books.books.length} />
+          <CardList books={books.books} />
         </>
       )}
     </div>

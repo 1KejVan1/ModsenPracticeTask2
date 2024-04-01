@@ -13,7 +13,6 @@ async function getBooks({
   category = "all",
   startIndex = 0,
 }: Props): Promise<IBooks> {
-  // const apiKey: string = process.env.REACT_APP_API_KEY as string;
   const apiKey: string = "AIzaSyCu2Kd8qGqIU6-qZw0XNUxDIjJkhr4v2tA";
   const data = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${searchText}&orderBy=${sortingBy}${
@@ -29,7 +28,6 @@ async function getBooks({
         categories: item.volumeInfo.categories,
         authors: item.volumeInfo.authors,
         smallimage: item.volumeInfo?.imageLinks?.smallThumbnail,
-        bigimage: item.volumeInfo?.imageLinks?.thumbnail,
         id: item.id,
         description: item.volumeInfo?.description,
       };

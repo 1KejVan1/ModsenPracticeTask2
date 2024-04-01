@@ -3,6 +3,7 @@ import {
   useContext,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useState,
 } from "react";
 
@@ -60,6 +61,10 @@ function MainPage(): ReactElement {
     fetching();
   }
 
+  const slicedBooks = useMemo(() => {
+    return books.books.slice(0, endIndex);
+  }, [endIndex, books]);
+
   if (endIndex === 30 && books.isLoaded == false) {
     return (
       <div className={classNames(style.container, style[theme])}>
@@ -74,7 +79,7 @@ function MainPage(): ReactElement {
             Found {books.quantity_items} results
           </div>
         )}
-        <CardList end={endIndex} books={books.books} />
+        <CardList books={slicedBooks} />
         {books.quantity_items &&
           endIndex !== (books.quantity_items as number) && (
             <div className={style.button_container}>

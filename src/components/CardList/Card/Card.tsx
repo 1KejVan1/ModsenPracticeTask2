@@ -15,7 +15,14 @@ import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
 import style from "./card.module.scss";
 
-function Card(props: IBook): ReactElement {
+function Card({
+  id,
+  description,
+  categories,
+  authors,
+  smallimage,
+  title,
+}: IBook): ReactElement {
   const favouriteBooks = useAppSelect((state) => state.favouriteBooks.books);
   const dispatch = useAppDispatch();
   const { theme } = useContext(ThemeContext);
@@ -23,13 +30,22 @@ function Card(props: IBook): ReactElement {
   function addBook(e: React.MouseEvent<SVGElement, MouseEvent>) {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(addFavouriteBook(props));
+    dispatch(
+      addFavouriteBook({
+        authors: authors,
+        categories: categories,
+        smallimage: smallimage,
+        title: title,
+        id: id,
+        description: description,
+      }),
+    );
   }
 
   function removeBook(e: React.MouseEvent<SVGElement, MouseEvent>) {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(removeFavouriteBook(props.id));
+    dispatch(removeFavouriteBook(id));
   }
 
   useEffect(() => {
@@ -39,25 +55,20 @@ function Card(props: IBook): ReactElement {
   return (
     <div className={classNames(style.container, style[theme])}>
       <div className={style.image_container}>
-        <img
-          src={props.smallimage ? props.smallimage : noimage}
-          alt={props.title}
-        />
+        <img src={smallimage ? smallimage : noimage} alt={title} />
       </div>
-      <div className={style.category}>
-        {props.categories && props.categories[0]}
-      </div>
+      <div className={style.category}>{categories && categories[0]}</div>
       <div
         className={classNames(
           style.title,
           theme === Theme.Light ? style.light_title : style[theme],
         )}
       >
-        {props.title}
+        {title}
       </div>
       <div className={style.container_for_author_favourite}>
-        <div className={style.author}>{props.authors && props.authors[0]}</div>
-        {favouriteBooks.find((item) => item.id === props.id) === undefined ? (
+        <div className={style.author}>{authors && authors[0]}</div>
+        {favouriteBooks.find((item) => item.id === id) === undefined ? (
           <MdFavoriteBorder fill="red" size={24} onClick={addBook} />
         ) : (
           <MdFavorite fill="red" size={24} onClick={removeBook} />

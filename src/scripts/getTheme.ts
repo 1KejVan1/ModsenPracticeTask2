@@ -1,4 +1,4 @@
-import { Theme } from "../enums/Theme";
+import { Theme } from "@enums/Theme";
 
 export function getTheme(): Theme | string {
   const theme = `${window.localStorage.getItem("theme")}`;

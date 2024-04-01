@@ -1,4 +1,4 @@
-import { IBook } from "../interfaces/IBook";
+import { IBook } from "@interfaces/IBook";
 
 export function setFavBooks(favbooks: IBook[]) {
   let str: string[][] = new Array(favbooks.length);

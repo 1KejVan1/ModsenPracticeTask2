@@ -1,6 +1,5 @@
 export interface IBook {
   smallimage?: string;
-  bigimage?: string;
   categories: string[];
   title: string;
   authors: string[];
