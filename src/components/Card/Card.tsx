@@ -12,7 +12,7 @@ import {
 import classNames from "classnames";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
-import { ThemeContext } from "../../context/ThemeContext";
+// import { ThemeContext } from "../../context/ThemeContext";
 import style from "./card.module.scss";
 
 function Card({
@@ -25,7 +25,8 @@ function Card({
 }: IBook): ReactElement {
   const favouriteBooks = useAppSelect((state) => state.favouriteBooks.books);
   const dispatch = useAppDispatch();
-  const { theme } = useContext(ThemeContext);
+  // const { theme } = useContext(ThemeContext);
+  const theme = Theme.Light;
 
   function addBook(e: React.MouseEvent<SVGElement, MouseEvent>) {
     e.preventDefault();
