@@ -10,6 +10,7 @@ import {
 import { getBooks } from "@API/api";
 import CardList from "@components/CardList/CardList";
 import Loader from "@components/Loader/Loader";
+import { ThemeContext } from "@context/ThemeContext";
 import { Theme } from "@enums/Theme";
 import useFetching from "@hooks/fetchBooks";
 import { useAppDispatch, useAppSelect } from "@hooks/redux";
@@ -17,7 +18,6 @@ import { addBooks, changeLoadStatus } from "@store/bookSlice";
 import { setStartIndex } from "@store/searchSlice";
 import classNames from "classnames";
 
-import { ThemeContext } from "../../Context/ThemeContext";
 import style from "./page.module.scss";
 
 function MainPage(): ReactElement {

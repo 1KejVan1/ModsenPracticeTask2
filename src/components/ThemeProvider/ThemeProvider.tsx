@@ -5,13 +5,12 @@ import React, {
   useState,
 } from "react";
 
+import { ThemeContext } from "@context/ThemeContext";
 import { Theme } from "@enums/Theme";
 import { useAppDispatch } from "@hooks/redux";
 import { getFavBooks } from "@scripts/getAndSetFavBooks";
 import { getTheme } from "@scripts/getTheme";
 import { addFavouriteBooks } from "@store/favouriteBooksSlice";
-
-import { ThemeContext } from "../../Context/ThemeContext";
 
 interface Props {
   children: React.ReactNode;

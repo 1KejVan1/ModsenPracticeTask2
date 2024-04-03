@@ -18,6 +18,7 @@ export default defineConfig({
       "@hooks/*": ["./src/hooks/*"],
       "@enums/*": ["./src/enums/*"],
       "@assets/*": ["./src/assets/*"],
+      "@context/*": ["./src/Context/*"],
     },
   },
 });

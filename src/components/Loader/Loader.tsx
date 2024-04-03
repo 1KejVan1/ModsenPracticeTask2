@@ -1,8 +1,8 @@
 import { ReactElement, useContext } from "react";
 
+import { ThemeContext } from "@context/ThemeContext";
 import classNames from "classnames";
 
-import { ThemeContext } from "../../Context/ThemeContext";
 import style from "./loader.module.scss";
 
 function Loader(): ReactElement {

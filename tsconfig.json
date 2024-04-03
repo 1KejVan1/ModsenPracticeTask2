@@ -20,7 +20,8 @@
       "@interfaces/*": ["./src/interfaces/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@enums/*": ["./src/enums/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@context/*": ["./src/Context/*"]
     }
   },
   "include": ["src"]

@@ -1,6 +1,7 @@
 import { ReactElement, useContext, useEffect } from "react";
 
 import noimage from "@assets/no-image.png";
+import { ThemeContext } from "@context/ThemeContext";
 import { Theme } from "@enums/Theme";
 import { useAppDispatch, useAppSelect } from "@hooks/redux";
 import { IBook } from "@interfaces/IBook";
@@ -12,7 +13,6 @@ import {
 import classNames from "classnames";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
-import { ThemeContext } from "../../Context/ThemeContext";
 import style from "./card.module.scss";
 
 function Card({
