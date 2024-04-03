@@ -3,7 +3,7 @@ import React, { ReactElement, useContext } from "react";
 import classNames from "classnames";
 import { MdSearch } from "react-icons/md";
 
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../Context/ThemeContext";
 import style from "./searchbar.module.scss";
 
 interface Props {

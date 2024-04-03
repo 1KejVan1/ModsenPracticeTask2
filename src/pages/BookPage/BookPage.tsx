@@ -6,7 +6,7 @@ import { IBook } from "@interfaces/IBook";
 import classNames from "classnames";
 import { useParams } from "react-router";
 
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../Context/ThemeContext";
 import BookDoesntExistPage from "../BookDoesntExistPage/BookDoesntExistsPage";
 import style from "./bookpage.module.scss";
 

@@ -2,7 +2,7 @@ import { ReactElement, useContext } from "react";
 
 import classNames from "classnames";
 
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../Context/ThemeContext";
 import style from "./notfoundpage.module.scss";
 
 function NotFoundPage(): ReactElement {

@@ -11,7 +11,7 @@ import { getFavBooks } from "@scripts/getAndSetFavBooks";
 import { getTheme } from "@scripts/getTheme";
 import { addFavouriteBooks } from "@store/favouriteBooksSlice";
 
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 interface Props {
   children: React.ReactNode;

@@ -1,6 +1,6 @@
 import { ReactElement, useContext } from "react";
 
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../Context/ThemeContext";
 import style from "./doesn'texist.module.scss";
 
 function BookDoesntExistPage(): ReactElement {

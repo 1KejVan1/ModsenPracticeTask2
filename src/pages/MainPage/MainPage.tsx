@@ -17,7 +17,7 @@ import { addBooks, changeLoadStatus } from "@store/bookSlice";
 import { setStartIndex } from "@store/searchSlice";
 import classNames from "classnames";
 
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../Context/ThemeContext";
 import style from "./page.module.scss";
 
 function MainPage(): ReactElement {
