@@ -12,7 +12,7 @@ import {
 import classNames from "classnames";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
-import { ThemeContext } from "../../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import style from "./card.module.scss";
 
 function Card({
